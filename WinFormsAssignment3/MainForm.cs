@@ -9,7 +9,7 @@ namespace WinFormsAssignment3
 {
     public partial class MainForm : Form
     {
-        private const string HANDS_FOLDER = @"C:\Users\jbagg\source\repos\Assignment4\WinFormsAssignment3\images\";
+        private const string HANDS_FOLDER = @"C:\Users\jbagg\Source\Repos\Assignment4\WinFormsAssignment3\images\";
         private const string DEFAULT_EXT = "txt";
         private Deck deck;
         private Card[] hand = new Card[5];
@@ -44,7 +44,7 @@ namespace WinFormsAssignment3
             if (!IsRedraw())
             {
                 deck.Shuffle();
-                deckForm.UpdateDeck();
+                
             }
 
             // Deal out the cards
@@ -56,7 +56,7 @@ namespace WinFormsAssignment3
 
             UpdateHandPics();
             ResetKeepCheckboxes();
-            deckForm.UpdateDeck();
+            
         }
 
         private void UpdateHandPics()
@@ -67,6 +67,11 @@ namespace WinFormsAssignment3
             hand3PictureBox.Image = hand[2].CardImage;
             hand4PictureBox.Image = hand[3].CardImage;
             hand5PictureBox.Image = hand[4].CardImage;
+
+            if ((deckForm != null) && (deckForm.Visible))
+            {
+                deckForm.UpdateDeck();
+            }
         }
 
         private bool IsRedraw()
